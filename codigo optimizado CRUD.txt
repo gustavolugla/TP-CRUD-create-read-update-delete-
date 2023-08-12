@@ -1,0 +1,91 @@
+desde el  sistema de importación os  
+ tiempo de importación
+importar  conexion  como  conn
+db  =  conexión . base de datos ()
+sistema ( "claro" )
+def  crear ():
+    nombre  =  str ( entrada ( "INGRESA SU NOMBRE: " ))
+    email  =  str ( input ( "INGRESA SU EMAIL: " ))
+    if ( len ( nombre ) >  0  y  Len ( correo electrónico ) >  0 ):
+        sql  =  "INSERTAR EN EL SISTEMA (nombre, correo electrónico) VALORES (?,?)"
+        parametros  = ( nombre , email )
+        base de datos ejecutar_consulta ( sql , parametros )
+        imprimir ( "Insertados" )
+ lectura definida ():
+    sql  =  "SELECCIONAR * DESDE sistema"
+    resultado  =  db . ejecutar_consulta ( sql )
+    para  datos  en  resultado :
+        imprimir ( """
+        IDENTIFICACIÓN : {}
+        NOMBRE : {}
+        CORREO ELECTRÓNICO : {}
+formato         """ ( datos [ 0 ] , datos [ 1 ], datos [ 2 ]))
+ actualización de definición ():
+    id  =  int ( entrada ( "INGRESA EL ID: " ))
+    si ( id  !=  0 ):
+        nombre  =  str ( entrada ( "INGRESA SU NOMBRE: " ))
+        email  =  str ( input ( "INGRESA SU EMAIL: " ))
+        if ( len ( nombre ) >  0  y  Len ( correo electrónico ) >  0 ):
+            sql  =  "ACTUALIZAR sistema SET nombre=?,email=? DONDE id=?"
+            parametros  = ( nombre , email , id )
+            base de datos ejecutar_consulta ( sql , parametros )
+            imprimir ( "¡Actualizado!" )
+    más :
+        print ( "Se requiere un ID" )
+def  eliminar ():
+    id  =  int ( entrada ( "INGRESA EL ID: " ))
+    si ( id  !=  0 ):
+        sql  =  "ELIMINAR DEL sistema DONDE id=?"
+        parametros  = ( id ,)
+        base de datos ejecutar_consulta ( sql , parametros )
+        imprimir ( "¡Eliminado!" )
+    más :
+        print ( "Se requiere un ID" )
+ búsqueda de definición ():
+    nombre  =  str ( entrada ( "Buscar por nombre: " ))
+    si ( largo ( nombre ) >  0 ):
+        sql  =  "SELECCIONE * DESDE sistema DONDE nombre COMO?"
+        parametros  = ( '%{}%' . formato ( nombre ),)
+        resultado  =  db . ejecutar_consulta ( sql , parametros )
+        para  datos  en  resultado :
+            imprimir ( """
+            +Identificación: {}
+            +NOMBRE: {}
++CORREO ELECTRÓNICO: {             }""" .formato ( datos [ 0 ], datos [ 1 ], datos [ 2 ]))
+mientras que  es cierto :
+    imprimir ( "========================================" )
+    imprimir ( " \t CRUD CON SQLite3" )
+    imprimir ( "========================================" )
+    imprimir ( " \t [1] Insertar registro" )
+    print ( " \t [2] Listar registros" )
+    print ( " \t [3] Actualizar registros" )
+    print ( " \t [4] Eliminar registros" )
+    print ( " \t [5] Buscar registros" )
+    imprimir ( " \t [6] Salir" )
+    imprimir ( "========================================" )
+
+    prueba :
+        opción  =  int ( input ( "Selecciona una opción:" ))
+        si ( opción  ==  1 ):
+            crear ()
+            tiempo _ dormir ( 1 )
+            sistema ( "claro" )
+        elif ( opción  ==  2 ):
+            leer ()
+            tiempo _ dormir ( 1 )
+        elif ( opción  ==  3 ):
+            actualizar ()
+            tiempo _ dormir ( 1 )
+            sistema ( "claro" )
+        elif ( opción  ==  4 ):
+            borrar ()
+            tiempo _ dormir ( 1 )
+            sistema ( "claro" )
+        elif ( opción  ==  5 ):
+            buscar ()
+
+        elif ( opción  ==  6 ):
+            romper
+    excepto :
+        print ( "Por favor, seleccione las opciones correctas" )
+        sistema ( "claro" )
